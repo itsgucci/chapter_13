@@ -24,7 +24,7 @@ def greeting; end
 begin
   load DIR + 'spells'
 rescue LoadError
-  god = "def create(spell); conjuration = File.new(DIR + 'spells', 'a'); conjuration.puts spell; instance_eval spell; end"
+  god = "def create(spell); File.open(DIR + 'spells', 'a') {|conjuration| conjuration.puts spell}; instance_eval spell; end"
   instance_eval god
   create god
   
