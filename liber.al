@@ -3,7 +3,8 @@
 require 'ftools'
 require 'logger'
 
-DIR = ".vel/" || ARGV.first
+DIR = ARGV.first || ".vel/"
+ARGV.clear # needed so gets works later. ruby idiosyncracy. 
 raise "directories must end with a /" unless DIR.match(/\/$/)
 unless File.exist? DIR
   File.makedirs DIR
