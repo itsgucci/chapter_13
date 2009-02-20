@@ -36,13 +36,14 @@ Once the Book is open, ones work may begin.
 
 The Book is of unique building and is shaped by the spells which constitute it. The first spell was create, whom spawned invoke, and together they opened up infinite possibilities. Spells, and the rules they represent, are simply temporal placeholders until greater truths are revealed. The Book is prudently designed with evolution in mind.
 
-All commands are received, logged and interpreted when the Enter key is struck. Commands beginning with ":", "#" and "/" have significant meaning and deviate from the typical said command. The context sensitivity allows for a seamless experience of summoning with the computer interface. Standard callback behavior should be modified as one becomes more adept in magickal practice.
+All commands are received, logged and interpreted when the Enter key is struck. Commands beginning with ":", "!" and "," have significant meaning and deviate from the typical said command. The context sensitivity allows for a seamless experience of summoning with the computer interface. Standard callback behavior should be modified as one becomes more adept in magickal practice.
 
 Ordinary commands trigger the "say(utterance)" callback after being recorded.
-"#" commands trigger the "proclaim(utterance)" callback after being recorded.
-"/" commands trigger the "whisper(utterance)" callback after being recorded.
+"!" commands trigger the "proclaim(utterance)" callback after being recorded.
+"," commands trigger the "whisper(utterance)" callback after being recorded.
 ":" commands trigger the "invoke(utterance)" callback after being recorded. The original behavior is intended to call spells by name.
 
 "greeting" is called during session invocation and adjournment. Must return a string.
 "prompt" is called before every incantation. Must return a string.
 
+".." terminates the recording session and exits the program

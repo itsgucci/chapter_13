@@ -39,10 +39,10 @@ ensure
     puts greeting
     print prompt
     while (input = gets.chomp) != ".."
-      if input.match /^#/
+      if input.match /^!/
         log.fatal(input)
         proclaim(input)
-      elsif input.match /^\//
+      elsif input.match /^,/
         log.warn(input)
         whisper(input)
       elsif input.match /^:/
