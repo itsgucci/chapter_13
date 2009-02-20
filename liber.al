@@ -34,28 +34,30 @@ rescue LoadError
   create "def greeting; 'Aum tat sat aum'; end"
 ensure
   log = Logger.new(DIR + 'legis')
-
   log.info("Recording session started")
-  puts greeting
-  
-  print prompt
-  while (input = gets.chomp) != ".."
-    if input.match /^#/
-      log.fatal(input)
-      proclaim(input)
-    elsif input.match /^\//
-      log.warn(input)
-      whisper(input)
-    elsif input.match /^:/
-      log.debug(input)
-      invoke(input)
-    else
-      log.error(input)
-      say(input)
-    end
+  begin # recording incantations
+    puts greeting
     print prompt
+    while (input = gets.chomp) != ".."
+      if input.match /^#/
+        log.fatal(input)
+        proclaim(input)
+      elsif input.match /^\//
+        log.warn(input)
+        whisper(input)
+      elsif input.match /^:/
+        log.debug(input)
+        invoke(input)
+      else
+        log.error(input)
+        say(input)
+      end
+      print prompt
+    end
+    puts greeting
+  rescue # vanishing demon will
+    log.info("Failure")
+    puts "failure"
   end
-
-  puts greeting
   log.info("Recorded session ending")
 end
