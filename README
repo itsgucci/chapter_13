@@ -18,3 +18,31 @@ And yet there is no page of this Book on which this word is not written; but so 
 This full stop may never be written anywhere else; for the writing of the Book goes on eternally; there is no way of closing the record until the goal of all has been attained. Let every page of this Book be filled with song -- for it is a Book of incantation!
 
 Love is the law, love under will
+
+
+=== Receive The Book ===
+
+% git clone git://github.com/itsgucci/chapter_13.git
+% cd chapter_13
+% chmod 755 liber.al
+
+=== Open The Book ===
+
+% ./liber.al [wisdom_directory]
+
+Once the Book is open, ones work may begin. 
+
+=== Master The Book ===
+
+The Book is of unique building and is shaped by the spells which constitute it. The first spell was create, whom spawned invoke, and together they opened up infinite possibilities. Spells, and the rules they represent, are simply temporal placeholders until greater truths are revealed. The Book is prudently designed with evolution in mind.
+
+All commands are received, logged and interpreted when the Enter key is struck. Commands beginning with ":", "#" and "/" have significant meaning and deviate from the typical said command. The context sensitivity allows for a seamless experience of summoning with the computer interface. Standard callback behavior should be modified as one becomes more adept in magickal practice.
+
+Ordinary commands trigger the "say(utterance)" callback after being recorded.
+"#" commands trigger the "proclaim(utterance)" callback after being recorded.
+"/" commands trigger the "whisper(utterance)" callback after being recorded.
+":" commands trigger the "invoke(utterance)" callback after being recorded. The original behavior is intended to call spells by name.
+
+"greeting" is called during session invocation and adjournment. Must return a string.
+"prompt" is called before every incantation. Must return a string.
+
