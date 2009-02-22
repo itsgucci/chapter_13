@@ -3,6 +3,7 @@
 # load required libraries
 require 'ftools'
 require 'logger'
+require 'irb'
 
 # set up environment
 DIR = ARGV.first || ".vel/"
@@ -43,6 +44,8 @@ ensure
       if input.match /^!/
         log.fatal(input)
         proclaim(input)
+      elsif input == "~"
+        IRB.start
       elsif input.match /^,/
         log.warn(input)
         whisper(input)
