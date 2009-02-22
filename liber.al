@@ -17,6 +17,7 @@ def proclaim(utterance); end
 def whisper(utterance); end
 def invoke(utterance); end
 def say(utterance); end
+def omni(utterance); end
 def prompt; end
 def greeting; end
 
@@ -52,6 +53,7 @@ ensure
         log.error(input)
         say(input)
       end
+      omni(input)
       print prompt
     end
     puts greeting
