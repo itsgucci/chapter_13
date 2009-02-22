@@ -57,8 +57,8 @@ ensure
       print prompt
     end
     puts greeting
-  rescue # vanishing demon will
-    log.info("Failure")
+  rescue Exception => demon
+    log.info("Failure | #{demon} | #{input}")
     puts "failure"
   end
   log.info("Recorded session ending")
