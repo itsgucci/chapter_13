@@ -14,13 +14,13 @@ unless File.exist? DIR
 end
 
 # hooks
+def initiation; end
 def proclaim(utterance); end
 def whisper(utterance); end
 def invoke(utterance); end
 def say(utterance); end
 def omni(utterance); end
-def prompt; end
-def greeting; end
+def epilogue; end
 
 # let there be light
 begin
@@ -32,37 +32,39 @@ rescue LoadError
   
   # for ones convinience
   create "def invoke(utterance); spell = utterance[1..-1]; eval spell; end"
-  create "def prompt; Time.now.strftime('%D') + ': '; end"
-  create "def greeting; 'Aum tat sat aum'; end"
+  create "def challenge; print Time.now.strftime('%D') + ': '; end"
+  create "def incantation; challenge; gets.chomp; end"
+  create "def initiation; puts 'Aum tat sat aum'; end"
 ensure
   log = Logger.new(DIR + 'legis')
   log.info("Recording session started")
   begin # recording incantations
-    puts greeting
-    print prompt
-    while (input = gets.chomp) != ".."
-      if input.match /^!/
-        log.fatal(input)
-        proclaim(input)
-      elsif input == "~"
+    initiation
+    while (command = incantation) != ".."
+      #this will be terser
+      if command.match /^!/
+        log.fatal(command)
+        proclaim(command)
+      elsif command == "~"
+        log.info("Summoning IRB")
         IRB.start
-      elsif input.match /^,/
-        log.warn(input)
-        whisper(input)
-      elsif input.match /^:/
-        log.debug(input)
-        invoke(input)
+        log.info("Dispelled IRB")
+      elsif command.match /^,/
+        log.warn(command)
+        whisper(command)
+      elsif command.match /^:/
+        log.debug(command)
+        invoke(command)
       else
-        log.error(input)
-        say(input)
+        log.error(command)
+        say(command)
       end
-      omni(input)
-      print prompt
+      omni(command)
     end
-    puts greeting
+    epilogue
   rescue Exception => demon
-    log.info("Failure | #{demon} | #{input}")
-    puts "failure"
+    log.info("Failure | #{demon} | #{command}")
+    puts "failure by #{demon}"
   end
   log.info("Recorded session ending")
 end
